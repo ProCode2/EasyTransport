@@ -1,0 +1,60 @@
+.navbar {
+  background: linear-gradient(to right, #000 30%, rgb(63, 185, 226) 70%);
+  width: 100;
+  display: flex;
+  grid-gap: 3rem;
+  padding: 0 2rem;
+}
+
+li {
+  list-style-type: none;
+  padding: 10px;
+  font-size: 1.2rem;
+}
+.list {
+  display: flex;
+  margin-left: auto;
+}
+
+.logo {
+  color: lightblue;
+}
+.list li {
+  font-style: monospace;
+  cursor: pointer;
+}
+
+.list li:hover {
+  color: rgb(75, 72, 72);
+  text-decoration: underline;
+}
+.display-none {
+  display: none;
+}
+
+.display {
+  display: block;
+}
+
+.ham-menu {
+  display: none;
+}
+.mob-list {
+  width: 100%;
+}
+.ham {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+}
+@media only screen and (max-width: 700px) {
+  .ham-menu {
+    display: block;
+  }
+  .list {
+    display: none;
+  }
+  .logo {
+    font-size: 1.3rem;
+  }
+}
