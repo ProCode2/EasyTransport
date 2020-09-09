@@ -1,0 +1,30 @@
+/*styling the form*/
+.form {
+  width: fit-content;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*to accept the locations*/
+.input {
+  padding: 10px;
+  border-radius: 12px;
+  margin: 15px 0;
+  outline: none;
+}
+
+/*styling the button*/
+.btn {
+  padding: 0.3rem 0.9rem;
+  background: rgb(6, 190, 6);
+  border-radius: 12px;
+  box-shadow: 1px 2px 2px 2px #424141;
+  display: block;
+  margin-left: auto;
+  outline: none;
+}
