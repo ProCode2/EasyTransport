@@ -1,0 +1,11 @@
+/*this is for styling of the about page*/
+.about {
+  text-align: center;
+  padding: 1rem;
+  background: rgb(157, 195, 238);
+  border-radius: 12px;
+  border: 1px solid gray;
+  box-shadow: 2px 2px 3px 3px rgb(114, 106, 106);
+  margin: 2rem;
+  height: 200px;
+}
