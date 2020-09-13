@@ -1,78 +1,83 @@
 .nav {
-    background: linear-gradient(to right, #000 30%, rgb(63, 185, 226) 70%);
+  background: linear-gradient(
+    to right,
+    rgb(29, 35, 119) 30%,
+    rgb(63, 185, 226) 70%
+  );
 }
-
+/*styling of the nav bar*/
 .navbar {
-    width: 100;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;;
-    align-items: center;
+  width: 100;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+/*styling of the menu*/
 li {
-    list-style-type: none;
-    padding: 10px;
-    font-size: 1.2rem;
+  list-style-type: none;
+  padding: 10px;
+  font-size: 1.2rem;
 }
 .list {
-    display: flex;
-    margin-left: auto;
+  display: flex;
+  margin-left: auto;
 }
 
 .logo {
-    color: lightblue;
+  color: lightblue;
 }
 .list li {
-    font-style: monospace;
-    cursor: pointer;
+  font-style: monospace;
+  cursor: pointer;
 }
 
 .list li:hover {
-    color: rgb(75, 72, 72);
-    text-decoration: underline;
+  color: rgb(75, 72, 72);
+  text-decoration: underline;
 }
 .display-none {
-    display: none;
+  display: none;
 }
 
 .display {
-    display: block;
+  display: block;
 }
 
 .ham-menu {
-    display: none;
+  display: none;
 }
 .mob-list {
-    padding: 0 2rem;
+  padding: 0 2rem;
 }
 
 .mob-list li {
-    color: lightblue;
-    text-shadow: 1px 1px 1px whitesmoke;
-    border-radius: 12px;
+  color: lightblue;
+  text-shadow: 1px 1px 1px whitesmoke;
+  border-radius: 12px;
 }
 
 .mob-list li:hover {
-    background: #003;
+  background: #003;
 }
 
 .ham {
-    display: flex;
-    flex-direction: column;
-    margin-left: auto;
-    background: red;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  background: red;
 }
 
 /* media queries - customisations for mobile version */
 @media only screen and (max-width: 700px) {
-    .ham-menu {
-        display: block;
-    }
-    .list {
-        display: none;
-    }
-    .logo {
-        font-size: 1.3rem;
-    }
+  .ham-menu {
+    display: block;
+  }
+  .list {
+    display: none;
+  }
+  .logo {
+    font-size: 1.3rem;
+  }
 }
