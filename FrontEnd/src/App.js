@@ -7,14 +7,14 @@ import About from "./Components/About";
 import Contact from "./Components/Contact";
 import Feedback from "./Components/Feedback";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Map from "./Components/Map";
+import Mapp from "./Components/Map";
 
 function Home() {
   return (
     <>
       <Logo />
       <Form />
-      <Map />
+      <Mapp />
     </>
   );
 }

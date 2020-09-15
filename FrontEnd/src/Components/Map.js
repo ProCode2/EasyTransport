@@ -1,20 +1,26 @@
-import React from "react";
+import React,{ useState, useEffect } from "react";
 import "./Map.css";
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
-export default function Map() {
-  var mymap = L.map("mapid").setView([51.505, -0.09], 13);
-  L.tileLayer(
-    "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={pk.eyJ1IjoiYXl1c2htYXp1bWRhciIsImEiOiJja2YxMWRvdDQwemZ6MnlvY2UzcDV3N3NvIn0.4J_e5xYRycYWAthgUJPKqQ}",
-    {
-      attribution:
-        'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-      maxZoom: 18,
-      id: "mapbox/streets-v11",
-      tileSize: 512,
-      zoomOffset: -1,
-      accessToken:
-        "pk.eyJ1IjoiYXl1c2htYXp1bWRhciIsImEiOiJja2YxMWRvdDQwemZ6MnlvY2UzcDV3N3NvIn0.4J_e5xYRycYWAthgUJPKqQ",
-    }
-  ).addTo(mymap);
-  return <div id="mapid"></div>;
+export default function Mapp() {
+  const [position, setPosition] = useState([51.0, 12]);
+  const zoom = 13;
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      setPosition([position.coords.latitude, position.coords.longitude]);
+    });
+  }, []);
+  return (
+    <Map center={position} zoom={zoom} className="map">
+        <TileLayer
+          attribution= {"&amp;copy <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"}
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={position}>
+          <Popup>
+            <strong>You</strong> are here!
+          </Popup>
+        </Marker>
+    </Map>
+  );
 }
