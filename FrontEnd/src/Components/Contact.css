@@ -7,5 +7,13 @@
   border: 1px solid gray;
   box-shadow: 2px 2px 3px 3px rgb(114, 106, 106);
   margin: 2rem;
-  height: 200px;
+  height: 250px;
+}
+
+.contact-Number {
+  display: inline-flex;
+}
+.contact-Email {
+  text-align: center;
+  display: flex;
 }
