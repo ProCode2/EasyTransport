@@ -10,10 +10,8 @@
   height: 250px;
 }
 
-.contact-Number {
-  display: inline-flex;
-}
-.contact-Email {
-  text-align: center;
+.contact-details {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }

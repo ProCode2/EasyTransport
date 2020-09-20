@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Nav.css";
 import { Link } from "react-router-dom";
-import reactRouterDom from "react-router-dom";
+
 const Nav = () => {
   const [nav, setNav] = useState(false);
   useEffect(() => {}, [nav]);

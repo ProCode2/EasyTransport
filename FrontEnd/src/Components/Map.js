@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Map.css";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 
 export default function Mapp() {
-  const [position, setPosition] = useState([51.0, 12]);
+  //const [position, setPosition] = useState([51.0, 12]);
   const database = [
     {
       vehicle: "bus",
@@ -23,7 +23,7 @@ export default function Mapp() {
     },
   ];
   const zoom = 15;
-  useEffect(() => {
+  /*useEffect(() => {
     fetch("http://localhost:3001/locs")
       .then((res) => res.json())
       .then((pos) => console.log(pos))
@@ -32,11 +32,11 @@ export default function Mapp() {
       setPosition([
         position.coords.latitude,
         position.coords.longitude,
-      ]); /* sent the coordinates to the usePosition Function*/
+      ]); // sent the coordinates to the usePosition Function
     });
-  }, []);
+}, []);*/
   return (
-    <Map center={position} zoom={zoom} className="map">
+    <Map center={database[0].location} zoom={zoom} className="map">
       <TileLayer
         attribution={
           'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
@@ -46,7 +46,7 @@ export default function Mapp() {
         token="pk.eyJ1IjoiYXl1c2htYXp1bWRhciIsImEiOiJja2YxMWRvdDQwemZ6MnlvY2UzcDV3N3NvIn0.4J_e5xYRycYWAthgUJPKqQ"
       />
       {database.map((pointer, index) => (
-        <Marker position={pointer.location}>
+        <Marker key={index} position={pointer.location}>
           <Popup>{pointer.vehicle}</Popup>
         </Marker>
       ))}
