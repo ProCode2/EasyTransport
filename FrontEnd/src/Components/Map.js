@@ -1,42 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Map.css";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 
 export default function Mapp() {
-  //const [position, setPosition] = useState([51.0, 12]);
-  const database = [
-    {
-      vehicle: "bus",
-      location: [22.5, 88.407],
-    },
-    {
-      vehicle: "bus",
-      location: [22.495, 88.405],
-    },
-    {
-      vehicle: "bus",
-      location: [22.49, 88.403],
-    },
-    {
-      vehicle: "bus",
-      location: [22.5, 88.4],
-    },
-  ];
+  const [pos, setPosition] = useState([]);
+
   const zoom = 15;
-  /*useEffect(() => {
-    fetch("http://localhost:3001/locs")
+  useEffect(() => {
+    /*
+     grabbing the data, converting to json
+    data is stored in position variable
+    */
+    fetch("http://localhost:5000")
       .then((res) => res.json())
-      .then((pos) => console.log(pos))
+      .then((pos) => {
+        console.log(pos);
+        setPosition(pos);
+      })
       .catch((err) => console.log(err));
+    //getting the position of the current user.
     navigator.geolocation.getCurrentPosition(function (position) {
-      setPosition([
-        position.coords.latitude,
-        position.coords.longitude,
+      setPosition((posi) => [
+        ...posi,
+        [position.coords.latitude, position.coords.longitude],
       ]); // sent the coordinates to the usePosition Function
     });
-}, []);*/
+  }, []);
   return (
-    <Map center={database[0].location} zoom={zoom} className="map">
+    <Map center={[22.5, 88.407]} zoom={zoom} className="map">
       <TileLayer
         attribution={
           'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
@@ -45,7 +36,7 @@ export default function Mapp() {
         id="mapbox/streets-v11"
         token="pk.eyJ1IjoiYXl1c2htYXp1bWRhciIsImEiOiJja2YxMWRvdDQwemZ6MnlvY2UzcDV3N3NvIn0.4J_e5xYRycYWAthgUJPKqQ"
       />
-      {database.map((pointer, index) => (
+      {pos.map((pointer, index) => (
         <Marker key={index} position={pointer.location}>
           <Popup>{pointer.vehicle}</Popup>
         </Marker>
