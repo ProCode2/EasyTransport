@@ -4,7 +4,7 @@ import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 
 export default function Mapp() {
   const [pos, setPosition] = useState([]);
-
+  const [userLoc, setUserLoc] = useState({});
   const zoom = 15;
   useEffect(() => {
     /*
@@ -13,21 +13,20 @@ export default function Mapp() {
     */
     fetch("http://localhost:5000")
       .then((res) => res.json())
-      .then((pos) => {
-        console.log(pos);
-        setPosition(pos);
+      .then((posi) => {
+        console.log(posi);
+        setPosition(posi);
       })
       .catch((err) => console.log(err));
     //getting the position of the current user.
     navigator.geolocation.getCurrentPosition(function (position) {
-      setPosition((posi) => [
-        ...posi,
-        [position.coords.latitude, position.coords.longitude],
-      ]); // sent the coordinates to the usePosition Function
+      setUserLoc({
+        loc: [position.coords.latitude, position.coords.longitude],
+      }); // sent the coordinates to the usePosition Function
     });
   }, []);
   return (
-    <Map center={[22.5, 88.407]} zoom={zoom} className="map">
+    <Map center={userLoc.loc} zoom={zoom} className="map">
       <TileLayer
         attribution={
           'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
@@ -41,6 +40,9 @@ export default function Mapp() {
           <Popup>{pointer.vehicle}</Popup>
         </Marker>
       ))}
+      <Marker position={userLoc.loc}>
+        <Popup>You</Popup>
+      </Marker>
     </Map>
   );
 }

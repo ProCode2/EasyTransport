@@ -1,12 +1,17 @@
+//for creating a server
 const express = require("express");
-const path = require("Path");
+//cross site origin requests
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const PORT = process.env.PORT || 5000;
 
 const app = express();
 
+//use cors middleware
 app.use(cors());
+app.use(express.json());
+app.use(bodyParser.json());
 
 const database = [
   {
@@ -26,9 +31,17 @@ const database = [
     location: [22.5, 88.4],
   },
 ];
+
 app.get("/", (req, res) => {
+  //send data to frontend (in this case json data)
   res.json(database);
 });
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}!`);
+
+  app.post("/Feedback", (req, res) => {
+    console.log(req.body);
+    res.json("Got It");
+  });
 });

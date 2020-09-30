@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Nav.css";
 import { Link } from "react-router-dom";
+import Ham from "../assets/images/Ham.svg";
 
 const Nav = () => {
   const [nav, setNav] = useState(false);
@@ -25,7 +26,7 @@ const Nav = () => {
         </ul>
         <div className="ham-menu">
           <h1 className="" onClick={() => setNav(!nav)}>
-            {nav ? "X" : "="}
+            {nav ? "X" : <img src={Ham} alt="hamburger menu" />}
           </h1>
         </div>
       </div>
