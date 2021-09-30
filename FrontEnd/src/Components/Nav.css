@@ -1,3 +1,7 @@
+a {
+  text-decoration: none;
+}
+
 .nav {
   background: linear-gradient(
     to right,
@@ -31,11 +35,12 @@ li {
 .list li {
   font-style: monospace;
   cursor: pointer;
+  font-weight: 700;
+  color: white;
 }
 
 .list li:hover {
   color: rgb(75, 72, 72);
-  text-decoration: underline;
 }
 .display-none {
   display: none;
